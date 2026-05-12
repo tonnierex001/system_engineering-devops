@@ -1,13 +1,15 @@
-#!/usr/bin/env bash
-# Print "To infinity and beyond" forever; on SIGTERM print "I am invincible!!!" and continue
+#!/bin/bash
 
+# Function to handle SIGTERM signal
 handle_sigterm() {
     echo "I am invincible!!!"
 }
 
+# Trap SIGTERM (signal 15) and call the handler
 trap 'handle_sigterm' SIGTERM
 
+# Infinite loop
 while true; do
-  printf "To infinity and beyond\n"
-  sleep 2
+    echo "To infinity and beyond"
+    sleep 2
 done
