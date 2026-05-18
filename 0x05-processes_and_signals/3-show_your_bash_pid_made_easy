@@ -7,3 +7,4 @@ pgrep bash | while read pid; do
         echo "$pid $cmd"
     fi
 done
+     
