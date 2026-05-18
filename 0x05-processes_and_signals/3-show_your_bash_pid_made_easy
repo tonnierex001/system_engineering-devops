@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Displays the PID and command name of processes containing bash
+# Displays the PID and process name of processes containing "bash"
 
-pgrep -a bash | while read -r pid cmd; do
-    echo "$pid $cmd"
+for pid in $(pgrep bash); do
+    name=$(cat /proc/"$pid"/comm)
+    echo "$pid $name"
 done
