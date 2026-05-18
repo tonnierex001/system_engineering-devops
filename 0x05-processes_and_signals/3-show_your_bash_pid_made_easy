@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 # A Bash script that displays PID and full process name of all processes containing 'bash'
 
-pgrep -a bash
+pgrep bash | while read pid; do
+    cmd=$(tr '\0' ' ' < /proc/$pid/cmdline 2>/dev/null)
+    if [ -n "$cmd" ]; then
+        echo "$pid $cmd"
+    fi
+done
